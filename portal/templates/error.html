@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<section class="auth card">
+  <h1>{{ title }}</h1>
+  <p>{{ text }}</p>
+  <p><a class="btn" href="{{ url_for('views.dashboard') }}">Back to the portal</a></p>
+</section>
+{% endblock %}

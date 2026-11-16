@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Submissions{% endblock %}
+{% block content %}
+<h1>Submissions</h1>
+<p class="notice notice-warn"><b>Treat every download as untrusted.</b> Files come from students' devices. Open them in Protected View / a PDF reader with scripting off, and never choose “Enable Content” or “Enable Editing” for a submission.</p>
+<section class="card">
+{% if rows %}
+<div class="scroll"><table>
+  <thead><tr><th>Student</th><th>Assignment</th><th>File</th><th>Submitted</th><th>Scan</th><th></th></tr></thead><tbody>
+  {% for s in rows %}
+  <tr>
+    <td><a href="{{ url_for('views.student', student_id=s.student_id) }}">{{ s.full_name }}</a></td>
+    <td>{{ s.code }} · {{ s.title }}</td>
+    <td>{{ s.display_name }}<br><span class="hint">{{ [(s.size / 1024)|round|int, 1]|max }} KB · SHA-256 {{ s.sha256[:16] }}…</span></td>
+    <td>{{ s.uploaded_at|dt }}</td>
+    <td>{% if s.scan_status == 'clean' %}<span class="pill pill-ok">Scanned clean</span>{% else %}<span class="pill pill-warn" title="No antivirus scanner is configured on the server">Not virus-scanned</span>{% endif %}</td>
+    <td><a class="btn btn-small" href="{{ url_for('views.download', submission_id=s.id) }}">Download</a></td>
+  </tr>
+  {% endfor %}
+</tbody></table></div>
+{% else %}<p class="muted">No submissions yet.</p>{% endif %}
+</section>
+{% endblock %}

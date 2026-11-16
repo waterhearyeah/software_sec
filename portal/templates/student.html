@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ s.full_name }}{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('views.roster') }}">← Students</a></p>
+<section class="card narrow">
+  <h1>{{ s.full_name }}</h1>
+  <dl class="kv">
+    <dt>University ID</dt><dd>{{ s.username }}</dd>
+    <dt>Email</dt><dd>{{ s.email }}</dd>
+    <dt>Phone</dt><dd>{{ s.phone or '—' }}</dd>
+    <dt>Emergency contact</dt><dd>{{ s.emergency_contact or '—' }}</dd>
+  </dl>
+  <p class="hint">Use these details for teaching purposes only. This view has been recorded in the audit log.</p>
+  <p><a class="btn" href="{{ url_for('views.message_new', to=s.id) }}">Send message</a></p>
+</section>
+{% endblock %}

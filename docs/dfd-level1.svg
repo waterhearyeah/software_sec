@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 1010" width="1640" height="1010"
+ font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" fill="#152238">
+<defs>
+ <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#152238"/></marker>
+</defs>
+<rect width="1640" height="1010" fill="#ffffff"/>
+<text x="820.0" y="30" text-anchor="middle" dominant-baseline="middle" font-size="20" font-weight="bold" fill="#152238">Student Portal — Data Flow Diagram (Level 1) with Trust Boundaries</text>
+<text x="40" y="70" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#5b6577">UNTRUSTED ZONE — user devices and the Internet</text>
+<rect x="30" y="300" width="1580" height="300" rx="14" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="42" y="316" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#b3261e">TB1  Internet → Web app (HTTPS)</text>
+<rect x="450" y="345" width="1140" height="235" rx="14" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="1195" y="362" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#b3261e">TB2  Authenticated session</text>
+<rect x="30" y="720" width="1580" height="230" rx="14" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="42" y="936" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#b3261e">TB3  Application → Data tier (parameterised SQL only, least-privilege service account)</text>
+<rect x="1200" y="760" width="200" height="135" rx="14" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="1212" y="777" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#b3261e">TB4  Upload quarantine</text>
+<line x1="845" y1="60" x2="845" y2="180" stroke="#b3261e" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="857" y="72" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#b3261e">TB5  Role boundary</text>
+<rect x="425.0" y="95.0" width="190" height="70" fill="#eef1f5" stroke="#152238" stroke-width="2"/>
+<text x="520" y="121" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#152238">Student</text>
+<text x="520" y="139" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#152238">(browser)</text>
+<rect x="1075.0" y="95.0" width="190" height="70" fill="#eef1f5" stroke="#152238" stroke-width="2"/>
+<text x="1170" y="121" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#152238">Lecturer</text>
+<text x="1170" y="139" text-anchor="middle" dominant-baseline="middle" font-size="15" font-weight="bold" fill="#152238">(browser)</text>
+<circle cx="250" cy="480" r="62" fill="#e6eef8" stroke="#12355b" stroke-width="2"/>
+<text x="250" y="450" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#12355b">1.0</text>
+<text x="250" y="476" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">Authenticate</text>
+<text x="250" y="492" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">(password + MFA)</text>
+<circle cx="590" cy="480" r="62" fill="#e6eef8" stroke="#12355b" stroke-width="2"/>
+<text x="590" y="450" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#12355b">5.0</text>
+<text x="590" y="476" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">Manage</text>
+<text x="590" y="492" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">profile</text>
+<circle cx="880" cy="480" r="62" fill="#e6eef8" stroke="#12355b" stroke-width="2"/>
+<text x="880" y="450" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#12355b">2.0</text>
+<text x="880" y="476" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">View grades &amp;</text>
+<text x="880" y="492" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">attendance</text>
+<circle cx="1170" cy="480" r="62" fill="#e6eef8" stroke="#12355b" stroke-width="2"/>
+<text x="1170" y="450" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#12355b">3.0</text>
+<text x="1170" y="476" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">Submit / review</text>
+<text x="1170" y="492" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">assignments</text>
+<circle cx="1470" cy="480" r="62" fill="#e6eef8" stroke="#12355b" stroke-width="2"/>
+<text x="1470" y="450" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#12355b">4.0</text>
+<text x="1470" y="484" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="bold" fill="#152238">Messaging</text>
+<path d="M195.0,802.0 L25.0,802.0 L25.0,858.0 L195.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="59.0" y1="802.0" x2="59.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="42.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D7</text>
+<text x="127.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Audit log</text>
+<path d="M395.0,802.0 L225.0,802.0 L225.0,858.0 L395.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="259.0" y1="802.0" x2="259.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="242.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D2</text>
+<text x="327.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Sessions</text>
+<path d="M605.0,802.0 L435.0,802.0 L435.0,858.0 L605.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="469.0" y1="802.0" x2="469.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="452.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D1</text>
+<text x="537.0" y="822" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Users &amp;</text>
+<text x="537.0" y="838" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">credentials</text>
+<path d="M965.0,802.0 L795.0,802.0 L795.0,858.0 L965.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="829.0" y1="802.0" x2="829.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="812.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D3</text>
+<text x="897.0" y="822" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Grades &amp;</text>
+<text x="897.0" y="838" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">attendance</text>
+<path d="M1175.0,802.0 L1005.0,802.0 L1005.0,858.0 L1175.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="1039.0" y1="802.0" x2="1039.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="1022.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D4</text>
+<text x="1107.0" y="822" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Submission</text>
+<text x="1107.0" y="838" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">metadata</text>
+<path d="M1385.0,822.0 L1215.0,822.0 L1215.0,878.0 L1385.0,878.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="1249.0" y1="822.0" x2="1249.0" y2="878.0" stroke="#152238" stroke-width="2"/>
+<text x="1232.0" y="850" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D5</text>
+<text x="1317.0" y="842" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Uploaded</text>
+<text x="1317.0" y="858" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">files</text>
+<path d="M1595.0,802.0 L1425.0,802.0 L1425.0,858.0 L1595.0,858.0" fill="#fff8e1" stroke="#152238" stroke-width="2"/>
+<line x1="1459.0" y1="802.0" x2="1459.0" y2="858.0" stroke="#152238" stroke-width="2"/>
+<text x="1442.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">D6</text>
+<text x="1527.0" y="830" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="normal" fill="#152238">Messages</text>
+<line x1="460" y1="165" x2="286" y2="427" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="364" y="272" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="381.4753656512866" y="284" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F1</text>
+<line x1="510" y1="165" x2="574" y2="418" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="525" y="280" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="542.123076923077" y="292" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F5</text>
+<line x1="550" y1="165" x2="834" y2="436" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="661" y="276" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="677.6673603286652" y="288" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F2</text>
+<line x1="580" y1="165" x2="1114" y2="450" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="723" y="239" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="740.0627984714595" y="251" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F3</text>
+<line x1="605" y1="165" x2="1410" y2="458" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="765" y="218" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="782.0699428487663" y="230" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F4</text>
+<line x1="1085" y1="165" x2="310" y2="457" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="409" y="403" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="426.1486328084716" y="415" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F6</text>
+<line x1="1115" y1="165" x2="645" y2="447" stroke="#152238" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="839" y="309" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="856.4337509850816" y="321" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F9</text>
+<line x1="1170" y1="165" x2="1170" y2="416" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="1153" y="280" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="1170.0" y="292" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F7</text>
+<line x1="1230" y1="165" x2="1431" y2="429" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="1314" y="286" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="1330.6066171115885" y="298" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F8</text>
+<line x1="224" y1="539" x2="110" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="145" y="673" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="161.51668799126384" y="685" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F10</text>
+<line x1="262" y1="543" x2="310" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="271" y="674" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="288.27565344716487" y="686" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F11</text>
+<line x1="291" y1="529" x2="520" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="400" y="668" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="417.0046372850445" y="680" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F12</text>
+<line x1="576" y1="543" x2="520" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="528" y="674" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="545.382026243266" y="686" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F13</text>
+<line x1="880" y1="544" x2="880" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)"/>
+<rect x="863" y="662" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="880.0" y="674" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F14</text>
+<line x1="1155" y1="542" x2="1090" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="1102" y="674" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="1119.055829525488" y="686" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F15</text>
+<line x1="1193" y1="540" x2="1300" y2="822" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="1235" y="684" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="1251.7330227828345" y="696" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F16</text>
+<line x1="1478" y1="544" x2="1510" y2="802" stroke="#152238" stroke-width="1.6" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="1477" y="662" width="34" height="22" rx="11" fill="#fff" stroke="#152238"/>
+<text x="1493.94483444262" y="674" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="bold" fill="#152238">F17</text>
+<text x="40" y="985" text-anchor="start" dominant-baseline="middle" font-size="12" font-weight="normal" fill="#5b6577">All processes 2.0–5.0 also read D2 (validate session + CSRF token) and append to D7 (audit) — omitted for clarity.   Notation: rectangle = external entity · circle = process · open box = data store · red dashed = trust boundary.</text>
+</svg>

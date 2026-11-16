@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+<h1>Students</h1>
+<p class="muted privacy">🔒 You see only students enrolled in courses you teach. Viewing contact details is logged.</p>
+<section class="card">
+  <table><thead><tr><th>Course</th><th>Student</th><th>ID</th><th></th></tr></thead><tbody>
+  {% for r in rows %}
+  <tr><td>{{ r.code }}</td><td>{{ r.full_name }}</td><td>{{ r.username }}</td>
+      <td><a href="{{ url_for('views.student', student_id=r.id) }}">Contact details</a></td></tr>
+  {% endfor %}
+  </tbody></table>
+</section>
+{% endblock %}

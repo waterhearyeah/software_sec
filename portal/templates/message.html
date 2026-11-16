@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Message{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('views.messages') }}">← Messages</a></p>
+<article class="card">
+  <h1>{{ m.subject }}</h1>
+  <p class="muted">From <b>{{ m.sender }}</b> to <b>{{ m.recipient }}</b> · {{ m.sent_at|dt }}</p>
+  {# Body is rendered as plain, auto-escaped text: no HTML from users is ever interpreted. #}
+  <div class="msg-body">{{ m.body }}</div>
+  {% if not mine %}
+  <p><a class="btn" href="{{ url_for('views.message_new', reply=m.id) }}">Reply</a></p>
+  {% endif %}
+</article>
+{% endblock %}

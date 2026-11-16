@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Messages{% endblock %}
+{% block content %}
+<div class="head-row"><h1>Messages</h1><a class="btn" href="{{ url_for('views.message_new') }}">New message</a></div>
+{% for title, items, label in [('Inbox', inbox, 'From'), ('Sent', sent, 'To')] %}
+<section class="card">
+  <h2>{{ title }}</h2>
+  {% if items %}
+  <table><thead><tr><th>{{ label }}</th><th>Subject</th><th>Date</th></tr></thead><tbody>
+  {% for m in items %}
+  <tr class="{{ 'unread' if title == 'Inbox' and not m.read_at }}">
+    <td>{{ m.other }}</td>
+    <td><a href="{{ url_for('views.message', message_id=m.id) }}">{{ m.subject }}</a>{% if title == 'Inbox' and not m.read_at %} <span class="pill">New</span>{% endif %}</td>
+    <td>{{ m.sent_at|dt }}</td>
+  </tr>
+  {% endfor %}
+  </tbody></table>
+  {% else %}<p class="muted">No messages.</p>{% endif %}
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Grades & attendance{% endblock %}
+{% block content %}
+<h1>Grades &amp; attendance</h1>
+<p class="muted privacy">🔒 Only you and the lecturer of each course can see these records.</p>
+{% for code, c in courses.items() %}
+<section class="card">
+  <h2>{{ code }} <span class="muted">{{ c.title }}</span></h2>
+  <div class="two">
+    <div>
+      <h3>Grades</h3>
+      <table><thead><tr><th>Item</th><th class="r">Score</th></tr></thead><tbody>
+      {% for gr in c.grades %}<tr><td>{{ gr.item }}</td><td class="r">{{ '%g'|format(gr.score) }} / {{ '%g'|format(gr.max_score) }}</td></tr>{% endfor %}
+      </tbody></table>
+    </div>
+    <div>
+      <h3>Attendance {% if c.att_pct is not none %}<span class="pill">{{ c.att_pct }}%</span>{% endif %}</h3>
+      <table><thead><tr><th>Date</th><th>Status</th></tr></thead><tbody>
+      {% for a in c.att %}<tr><td>{{ a.day }}</td><td><span class="status status-{{ a.status }}">{{ a.status|capitalize }}</span></td></tr>{% endfor %}
+      </tbody></table>
+    </div>
+  </div>
+</section>
+{% else %}<p class="card muted">No records yet.</p>{% endfor %}
+{% endblock %}

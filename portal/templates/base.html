@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Student Portal{% endblock %} · Northfield University</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+  <script src="{{ url_for('static', filename='js/portal.js') }}" defer></script>
+</head>
+<body {% if user %}data-idle="{{ idle_timeout }}" data-csrf="{{ csrf_token }}"
+      data-keepalive="{{ url_for('auth.keepalive') }}" data-login="{{ url_for('auth.login') }}"{% endif %}>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="{{ url_for('views.dashboard') }}">
+      <span class="crest" aria-hidden="true">N</span>
+      <span>Northfield <b>Student Portal</b></span>
+    </a>
+    {% if user %}
+    <nav aria-label="Main">
+      {# Navigation shows only what this role can use (least privilege).
+         It is a convenience: every route is still checked on the server. #}
+      <a href="{{ url_for('views.dashboard') }}" {% if request.endpoint == 'views.dashboard' %}aria-current="page"{% endif %}>Home</a>
+      {% if user.role == 'student' %}
+      <a href="{{ url_for('views.grades') }}" {% if request.endpoint == 'views.grades' %}aria-current="page"{% endif %}>Grades &amp; attendance</a>
+      <a href="{{ url_for('views.assignments') }}" {% if request.endpoint == 'views.assignments' %}aria-current="page"{% endif %}>Assignments</a>
+      {% else %}
+      <a href="{{ url_for('views.roster') }}" {% if request.endpoint in ('views.roster', 'views.student') %}aria-current="page"{% endif %}>Students</a>
+      <a href="{{ url_for('views.submissions') }}" {% if request.endpoint == 'views.submissions' %}aria-current="page"{% endif %}>Submissions</a>
+      {% endif %}
+      <a href="{{ url_for('views.messages') }}" {% if request.endpoint.startswith('views.message') %}aria-current="page"{% endif %}>Messages</a>
+      <a href="{{ url_for('views.profile') }}" {% if request.endpoint == 'views.profile' %}aria-current="page"{% endif %}>Profile</a>
+    </nav>
+    <div class="who">
+      <a href="{{ url_for('auth.account_security') }}" class="who-name" title="Account security">
+        {{ user.full_name }} <span class="role">{{ user.role }}</span></a>
+      <form method="post" action="{{ url_for('auth.logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="btn btn-ghost" type="submit">Sign out</button>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</header>
+
+<div id="idle-warning" class="idle" role="alertdialog" aria-labelledby="idle-title" hidden>
+  <div class="idle-box">
+    <h2 id="idle-title">Still there?</h2>
+    <p>For your security you will be signed out in <b id="idle-left">2 minutes</b> because of inactivity. Unsaved changes will be lost.</p>
+    <button class="btn" id="idle-stay" type="button">Stay signed in</button>
+  </div>
+</div>
+
+<main id="main" class="wrap">
+  <div aria-live="polite">
+  {% for kind, text in flashes %}
+    <p class="notice notice-{{ kind }}" role="{{ 'alert' if kind == 'error' else 'status' }}">{{ text }}</p>
+  {% endfor %}
+  </div>
+  {% block content %}{% endblock %}
+</main>
+<footer class="wrap foot">
+  <span>{% if https_only %}🔒 Encrypted connection · {% endif %}You are signed out automatically after 15 minutes of inactivity.</span>
+  <span>The university will never ask for your password or verification code by email or phone.</span>
+</footer>
+</body>
+</html>

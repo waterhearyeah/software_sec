@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% macro field(name, label, type='text', hint=None, auto='off', max=200) %}
+  <label for="{{ name }}">{{ label }}</label>
+  <input id="{{ name }}" name="{{ name }}" type="{{ type }}" value="{{ values[name] }}" maxlength="{{ max }}"
+         autocomplete="{{ auto }}" {% if errors[name] %}aria-invalid="true" aria-describedby="{{ name }}-err"{% endif %}>
+  {% if errors[name] %}<p id="{{ name }}-err" class="field-error" role="alert">{{ errors[name] }}</p>{% endif %}
+  {% if hint %}<p class="hint">{{ hint }}</p>{% endif %}
+{% endmacro %}
+{% block content %}
+<h1>Profile</h1>
+<div class="two top">
+<section class="card">
+  <h2>University record</h2>
+  <dl class="kv">
+    <dt>Name</dt><dd>{{ user.full_name }}</dd>
+    <dt>University ID</dt><dd>{{ user.username }}</dd>
+    <dt>Role</dt><dd>{{ user.role|capitalize }}</dd>
+  </dl>
+  <p class="hint">These details are managed by the Registry and cannot be changed here.</p>
+  <h2>Who can see my contact details?</h2>
+  <ul class="plain">
+    <li>✔ You</li>
+    <li>✔ Lecturers of courses you are enrolled in (email, phone, emergency contact)</li>
+    <li>✘ Other students — never</li>
+    <li>✘ Your home address is not shown to lecturers</li>
+  </ul>
+</section>
+<section class="card">
+  <h2>Contact details</h2>
+  <form method="post" action="{{ url_for('views.profile') }}" novalidate data-email="{{ user.email }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    {{ field('email', 'Email', 'email', auto='email', max=254) }}
+    {{ field('phone', 'Phone', 'tel', auto='tel', max=20) }}
+    {{ field('address', 'Home address', auto='street-address', max=200) }}
+    {{ field('emergency_contact', 'Emergency contact', hint='Name and phone number of someone we can call.', max=120) }}
+    <div id="reauth" {% if not errors.current_password %}data-optional{% endif %}>
+      <label for="current_password">Current password</label>
+      <input id="current_password" name="current_password" type="password" autocomplete="current-password"
+             {% if errors.current_password %}aria-invalid="true" aria-describedby="cp-err"{% endif %}>
+      {% if errors.current_password %}<p id="cp-err" class="field-error" role="alert">{{ errors.current_password }}</p>{% endif %}
+      <p class="hint">Needed only when you change your email address, to confirm it is really you.</p>
+    </div>
+    <button class="btn" type="submit">Save changes</button>
+  </form>
+</section>
+</div>
+{% endblock %}

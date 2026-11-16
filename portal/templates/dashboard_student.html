@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Hello, {{ user.full_name.split(' ')[0] }}</h1>
+<div class="grid">
+  <a class="card tile" href="{{ url_for('views.assignments') }}">
+    <span class="num">{{ todo|length }}</span><span>assignment{{ '' if todo|length == 1 else 's' }} to submit</span></a>
+  <a class="card tile" href="{{ url_for('views.messages') }}">
+    <span class="num">{{ unread }}</span><span>unread message{{ '' if unread == 1 else 's' }}</span></a>
+  <a class="card tile" href="{{ url_for('views.grades') }}">
+    <span class="num">{{ courses|length }}</span><span>courses · view grades &amp; attendance</span></a>
+</div>
+<section class="card">
+  <h2>Due next</h2>
+  {% if todo %}
+  <table><thead><tr><th>Assignment</th><th>Course</th><th>Due</th></tr></thead><tbody>
+    {% for a in todo %}<tr><td>{{ a.title }}</td><td>{{ a.code }}</td><td>{{ a.due }}</td></tr>{% endfor %}
+  </tbody></table>
+  {% else %}<p class="muted">Nothing outstanding. Everything has been submitted.</p>{% endif %}
+</section>
+<section class="card">
+  <h2>My courses</h2>
+  <table><thead><tr><th>Code</th><th>Course</th><th>Lecturer</th></tr></thead><tbody>
+    {% for c in courses %}<tr><td>{{ c.code }}</td><td>{{ c.title }}</td><td>{{ c.lecturer }}</td></tr>{% endfor %}
+  </tbody></table>
+</section>
+{% endblock %}

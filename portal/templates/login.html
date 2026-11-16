@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<section class="auth card">
+  <h1>Sign in</h1>
+  <p class="muted">Use your university ID. You will be asked for a verification code next.</p>
+  {% if error %}<p class="notice notice-error" role="alert">{{ error }}</p>{% endif %}
+  <form method="post" action="{{ url_for('auth.login') }}" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <label for="username">University ID</label>
+    <input id="username" name="username" value="{{ username }}" maxlength="64" required
+           autocomplete="username" autocapitalize="none" spellcheck="false" autofocus>
+    <label for="password">Password</label>
+    <div class="pw">
+      <input id="password" name="password" type="password" required autocomplete="current-password">
+      <button type="button" class="pw-toggle" data-toggle="password" aria-pressed="false">Show</button>
+    </div>
+    {% if challenge %}
+    <label for="captcha">Verification: what is <b>{{ challenge }}</b>?</label>
+    <input id="captcha" name="captcha" inputmode="numeric" autocomplete="off" maxlength="3" required
+           aria-describedby="captcha-help">
+    <p id="captcha-help" class="hint">We ask this after failed sign-in attempts to block automated guessing.</p>
+    {% endif %}
+    <button class="btn btn-block" type="submit">Continue</button>
+  </form>
+  <p class="hint">Forgotten your password or lost your authenticator? Visit the Registry helpdesk with your student card — for your protection, resets are not done by email.</p>
+</section>
+{% endblock %}

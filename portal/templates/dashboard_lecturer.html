@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Hello, {{ user.full_name }}</h1>
+<div class="grid">
+  <a class="card tile" href="{{ url_for('views.messages') }}">
+    <span class="num">{{ unread }}</span><span>unread message{{ '' if unread == 1 else 's' }}</span></a>
+  <a class="card tile" href="{{ url_for('views.submissions') }}">
+    <span class="num">{{ courses|sum(attribute='submissions') }}</span><span>submissions to review</span></a>
+  <a class="card tile" href="{{ url_for('views.roster') }}">
+    <span class="num">{{ courses|sum(attribute='students') }}</span><span>students you teach</span></a>
+</div>
+<section class="card">
+  <h2>My courses</h2>
+  <table><thead><tr><th>Code</th><th>Course</th><th>Students</th><th>Submissions</th></tr></thead><tbody>
+    {% for c in courses %}<tr><td>{{ c.code }}</td><td>{{ c.title }}</td><td>{{ c.students }}</td><td>{{ c.submissions }}</td></tr>{% endfor %}
+  </tbody></table>
+</section>
+{% endblock %}

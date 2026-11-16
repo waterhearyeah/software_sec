@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Set up two-step verification{% endblock %}
+{% block content %}
+<section class="auth card">
+  <p class="step">One-time setup</p>
+  <h1>Set up two-step verification</h1>
+  <p class="muted">Every account needs this. It stops someone who learns your password from signing in as you.</p>
+  {% if error %}<p class="notice notice-error" role="alert">{{ error }}</p>{% endif %}
+  <ol class="steps">
+    <li>Install an authenticator app (Google Authenticator, Microsoft Authenticator, Aegis…).</li>
+    <li>Add an account and choose <b>Enter a setup key</b>.
+      <dl class="kv"><dt>Account</dt><dd>{{ account }}</dd><dt>Key</dt><dd><code class="secret">{{ secret }}</code></dd><dt>Type</dt><dd>Time-based</dd></dl>
+      <p class="hint">Keep this key private. It is shown only now.</p></li>
+    <li>Enter the 6-digit code the app shows.</li>
+  </ol>
+  <form method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <label for="code">6-digit code</label>
+    <input id="code" name="code" class="otp" inputmode="numeric" pattern="[0-9]*" maxlength="7"
+           autocomplete="one-time-code" required>
+    <button class="btn btn-block" type="submit">Turn on and sign in</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Account security{% endblock %}
+{% block content %}
+<h1>Account security</h1>
+<div class="two top">
+<section class="card">
+  <h2>Change password</h2>
+  {% if error %}<p class="notice notice-error" role="alert">{{ error }}</p>{% endif %}
+  <form method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <label for="current_password">Current password</label>
+    <input id="current_password" name="current_password" type="password" autocomplete="current-password" required>
+    <label for="new_password">New password</label>
+    <div class="pw">
+      <input id="new_password" name="new_password" type="password" autocomplete="new-password" required
+             minlength="{{ min_len }}" aria-describedby="pw-help" data-meter="pw-meter" data-min="{{ min_len }}">
+      <button type="button" class="pw-toggle" data-toggle="new_password" aria-pressed="false">Show</button>
+    </div>
+    <p id="pw-help" class="hint">At least {{ min_len }} characters. Longer is stronger — a few random words work well. No special-character rules; a password manager is welcome.</p>
+    <p id="pw-meter" class="hint" aria-live="polite"></p>
+    <label for="confirm_password">Repeat new password</label>
+    <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" required>
+    <button class="btn" type="submit">Change password</button>
+  </form>
+</section>
+<section class="card">
+  <h2>Sign-in protection</h2>
+  <ul class="plain">
+    <li>✔ Two-step verification is <b>on</b> (authenticator app)</li>
+    <li>✔ Changing your password signs out all your other devices</li>
+    <li>✔ You are signed out after 15 minutes of inactivity</li>
+  </ul>
+  {% if user.last_login_at %}<p class="hint">This sign-in: {{ user.last_login_at|dt }} from {{ user.last_login_ip }}</p>{% endif %}
+  <p class="hint">Lost your phone? Visit the Registry helpdesk with your student card to reset two-step verification.</p>
+</section>
+</div>
+{% endblock %}
